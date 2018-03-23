@@ -1,0 +1,33 @@
+{
+  "name": "news-scraper",
+  "version": "1.0.0",
+  "description": "scrapes news articles from the web",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lkanand/news-scraper.git"
+  },
+  "keywords": [
+    "news",
+    "scraper"
+  ],
+  "author": "Lokesh Anand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lkanand/news-scraper/issues"
+  },
+  "homepage": "https://github.com/lkanand/news-scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.0.11",
+    "nodemon": "^1.17.2",
+    "request": "^2.85.0"
+  }
+}
