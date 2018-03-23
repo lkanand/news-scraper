@@ -2,7 +2,7 @@
   "name": "news-scraper",
   "version": "1.0.0",
   "description": "scrapes news articles from the web",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,5 +29,8 @@
     "mongoose": "^5.0.11",
     "nodemon": "^1.17.2",
     "request": "^2.85.0"
-  }
+  },
+  "scripts": {
+   "start": "node server.js"
+ }
 }
