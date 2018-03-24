@@ -3,6 +3,25 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 module.exports = function(app) {
+	function sendScrapedArticles (res, articles, newArticles){
+		var promises = [];
+		for(var i = 0; i < newArticles.length; i++) {
+			var promise = db.Article.create(newArticles[i]).then(function(dbArticle){
+				articles.push(dbArticle);
+			}).catch(function(err) {
+				return res.json(err);
+			});
+			promises.push(promise);		
+		}
+		Promise.all(promises).then(function(){
+			var data = {
+				articles: articles
+			};
+
+			res.render("partials/scraped-article", data);
+		});
+	}
+
 	app.get("/", function(req, res){
 		res.render("index");
 	});
@@ -43,18 +62,7 @@ module.exports = function(app) {
 				promises.push(promise);
 			});
 			Promise.all(promises).then(function(){
-				promises = [];
-				for(var i = 0; i < newArticles.length; i++) {
-					var promise = db.Article.create(newArticles[i]).then(function(dbArticle){
-						articles.push(dbArticle);
-					}).catch(function(err) {
-						return res.json(err);
-					});
-					promises.push(promise);		
-				}
-				Promise.all(promises).then(function(){
-					res.json(articles);
-				});
+				sendScrapedArticles(res, articles, newArticles);
 			});
 		});
 	});
@@ -82,18 +90,7 @@ module.exports = function(app) {
 				promises.push(promise);
 			});
 			Promise.all(promises).then(function(){
-				promises = [];
-				for(var i = 0; i < newArticles.length; i++){
-					var promise = db.Article.create(newArticles[i]).then(function(dbArticle){
-						articles.push(dbArticle);
-					}).catch(function(err) {
-						return res.json(err);
-					});
-					promises.push(promise);		
-				}
-				Promise.all(promises).then(function(){
-					res.json(articles);
-				});
+				sendScrapedArticles(res, articles, newArticles);
 			});
 		});
 	});
@@ -121,18 +118,7 @@ module.exports = function(app) {
 				promises.push(promise);
 			});
 			Promise.all(promises).then(function(){
-				promises = [];
-				for(var i = 0; i < newArticles.length; i++){
-					var promise = db.Article.create(newArticles[i]).then(function(dbArticle){
-						articles.push(dbArticle);
-					}).catch(function(err) {
-						return res.json(err);
-					});
-					promises.push(promise);		
-				}
-				Promise.all(promises).then(function(){
-					res.json(articles);
-				});
+				sendScrapedArticles(res, articles, newArticles);
 			});
 		});
 	});

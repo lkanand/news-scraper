@@ -1,0 +1,16 @@
+{{#each articles}}
+	<div class = "news-article">
+		<div class = "news-article-img" style = "background-image: url('{{imageLink}}')">
+		</div>
+		<div class = "news-article-info">
+			<h3><a href = "{{link}}" target = "_blank">{{title}}</a></h3>
+			<p class = "author">By: {{author}}</p>
+			<p class = "summary">{{summary}}</p>
+			{{#if saved}}
+				<button class = 'saved' saved = 'true' article-id = "{{_id}}">Saved</button>
+			{{else}}
+				<button class = 'not-saved' saved = 'false' article-id = "{{_id}}">Save</button>
+			{{/if}}
+		</div>
+	</div>
+{{/each}}

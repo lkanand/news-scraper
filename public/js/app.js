@@ -68,25 +68,9 @@ $(document).ready(function(){
 			url: request
 		}).then(function(response){
 			$(".news-article").remove();
-			for(var i = 0; i < response.length; i++) {
-				var newsArticle = $("<div>");
-				newsArticle.addClass("news-article");
-				var newsImage = $("<div>");
-				newsImage.addClass("news-article-img");
-				newsImage.attr("style", "background-image: url('" + response[i].imageLink + "')");
-				newsArticle.append(newsImage);
-				var newsInfo = $("<div>");
-				newsInfo.addClass("news-article-info");
-				newsInfo.append("<h3><a href = '" + response[i].link + "' target = '_blank'>" + response[i].title + "</a></h3>");
-				newsInfo.append("<p class = 'author'>By: " + response[i].author + "</p>");
-				newsInfo.append("<p class = 'summary'>" + response[i].summary + "</p>");
-				if(response[i].saved === true)
-					newsInfo.append("<button class = 'saved' saved = 'true' article-id = '" + response[i]._id + "'>Saved</button>");
-				else
-					newsInfo.append("<button class = 'not-saved' saved = 'false' article-id = '" + response[i]._id + "'>Save</button>");
-				newsArticle.append(newsInfo);
-				$("footer").append(newsArticle);
-			}
+
+			response = response.split("<body>")[1].split("</body>")[0];
+			$("footer").append(response);
 
 			$('.news-article-img').each(function(i, element){
 				$(this).css({'height': ($(this).next().height() + 'px')});
