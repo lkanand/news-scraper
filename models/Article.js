@@ -3,8 +3,17 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
-	source: {
-		type: String
+	burntorange: {
+		type: Boolean,
+		default: false
+	},
+	hookem: {
+		type: Boolean,
+		default: false
+	},
+	texasdiehards: {
+		type: Boolean,
+		default: false
 	},
 	title: {
 		type: String

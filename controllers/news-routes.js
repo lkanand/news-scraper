@@ -12,12 +12,7 @@ module.exports = function(app) {
 			var data = {
 				articles: response
 			};
-			var helpers = {
-				eq: function(a, b) {
-					return a === b;
-				}
-			};
-			res.render("saved", {data, helpers});
+			res.render("saved", data);
 		});
 	});
 
@@ -33,7 +28,7 @@ module.exports = function(app) {
 				author = author[0] + " " + author[1]
 				author = author.split("\n");
 				author = author[0];
-				article.source = "Burnt Orange Nation";
+				article.burntorange = true;
 				article.title = $(this).find(".c-entry-box--compact__title a").text();
 				article.summary = $(this).find(".p-dek").text();
 				article.author = author;
@@ -72,7 +67,7 @@ module.exports = function(app) {
 			var $ = cheerio.load(response.data);
 			$(".entry-tease-hookem_story, .entry-tease-post").each(function(i, element){
 				var article = {};
-				article.source = "Hook 'Em";
+				article.hookem = true;
 				article.title = $(this).find("h2").children("a").text();
 				article.summary = $(this).find(".col-md-7").clone().children().remove().end().text();
 				article.author = $(this).find(".author-name").children("a").eq(0).text();
@@ -111,7 +106,7 @@ module.exports = function(app) {
 			var $ = cheerio.load(response.data);
 			$("div.cm-media-block").each(function(i, element){
 				var article = {};
-				article.source = "Texas Diehards";
+				article.texasdiehards = true;
 				article.title = $(this).find("h2").children("a").eq(0).text();
 				article.summary = $(this).find(".cm-stream__intro").text();
 				article.author = $(this).find(".cm-stream__byline").text();
@@ -145,12 +140,51 @@ module.exports = function(app) {
 	app.put("/update-saved", function(req, res){
 		db.Article.update({_id: req.body.id}, {
 			$set: {
-				saved: req.body.saved
+				saved: req.body.saved,
+				notes: []
 			}
 		}).catch(function(err){
 			res.json(err);
 		});
 		res.json("success");
+	});
+
+	app.get("/get-comments/:id", function(req, res){
+		db.Article.findOne({_id: req.params.id}).populate("notes").then(function(response){
+			res.json(response.notes);
+		}).catch(function(err){
+			res.json(err);
+		});
+	});
+
+	app.post("/post-comment", function(req, res){
+		db.Note.create({body: req.body.comment}).then(function(note){
+			db.Article.update({_id: req.body.id}, {
+				$push: {
+					notes: note._id
+				}
+			}).catch(function(err){
+				res.json(err);
+			});
+			res.json(note);
+		}).catch(function(error){
+			res.json(error);
+		});
+	});
+
+	app.delete("/delete-comment", function(req, res){
+		db.Note.remove({_id: req.body.commentId}).then(function(removedNote){
+			db.Article.update({_id: req.body.articleId}, {
+				$pull: {
+					notes: req.body.commentId
+				}
+			}).catch(function(err){
+				res.json(err);
+			});
+			res.json("success");
+		}).catch(function(error){
+			res.json(error);
+		});
 	});
 
 	app.get("/*", function(req, res){

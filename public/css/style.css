@@ -172,12 +172,16 @@ button:hover{
 	color: #bf5617;
 	border: 1px solid #bf5617;
 	background: white;
+	font-family: "chunkfiveroman";
+	padding: 7px;
 }
 
 .saved{
 	color: white;
 	border: 1px solid #bf5617;
 	background: #bf5617;
+	font-family: "chunkfiveroman";
+	padding: 7px;
 }
 
 .modal{
@@ -227,6 +231,77 @@ h5{
 
 .article-group{
 	border: 2px solid #bf5617;
-	padding: 10px;
-	margin-bottom: 10px;
+	padding: 10px 10px 20px 10px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.unsave, .comment{
+	color: #bf5617;
+	border: 1px solid #bf5617;
+	background: white;
+	font-family: "chunkfiveroman";
+	padding: 7px;
+}
+
+.unsave:hover{
+	background: #bf5617;
+	color: white;
+	cursor: pointer;
+}
+
+.comment:hover{
+	background: #bf5617;
+	color: white;
+	cursor: pointer;
+}
+
+.close{
+	color: #bf5617;
+	opacity: 1;
+}
+
+.close:hover{
+	color: #bf5617;
+	opacity: 1;
+}
+
+.modal-body{
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.opinion{
+	border-bottom: 1px solid #bf5617;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
+	display: inline-block;
+	width: 100%;
+}
+
+.opinion:last-child{
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.opinion span{
+	text-align: left;
+	margin-bottom: .6rem;
+	width: 80%;
+	float: left;
+}
+
+#new-comment {
+	height: 100px;
+	width: 100%;
+	margin-bottom: .6rem;
+}
+
+#submit-new-comment, .delete-comment{
+	float: right;
+	font-family: 'chunkfiveroman';
 }
