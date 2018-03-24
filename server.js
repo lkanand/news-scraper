@@ -15,7 +15,11 @@ app.set("view engine", "handlebars");
 require("./controllers/news-routes.js")(app);
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/news-scraper");
+
+if(process.env.MONGODB_URI)
+	mongoose.connect(process.env.MONGODB_URI);
+else
+	mongoose.connect("mongodb://localhost/news-scraper");
 
 var PORT = 8000;
 
