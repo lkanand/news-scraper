@@ -1,0 +1,97 @@
+<header>
+	<div class = "wrapper">
+		<img src = "/img/longhorn-logo.png">
+		<div id = "title">
+			<h1>Texas Sports Wire</h1>
+			<h2>The Pulse of the Longhorns</h2>
+		</div>
+		<img src = "/img/longhorn-logo.png">
+	</div>
+</header>
+
+<div id = "menu">
+	<ul id = "home">
+		<a href = "/"><li>Home</li></a>
+	</ul>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <h5>You scraped <span id="articles-added"></span> articles!</h5>
+        <p>The Eyes of Texas are Upon You!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class = "parallax-saved">
+</div>
+
+<footer>
+	{{#each articles}}
+		{{#eq source "Burnt Orange Nation"}}
+			<div class = "article-group" id = "burnt-orange-nation">
+			<h1>Burnt Orange Nation</h1>
+				<div class = "news-article">
+					<div class = "news-article-img" style = "background-image: url('"{{imageLink}}"')">
+					</div>
+					<div class = "news-article-info">
+						<h3><a href = "{{link}}" target = "_blank">{{title}}</a></h3>
+						<p class = "author">By: {{author}}</p>
+						<p class = "summary">{{summary}}</p>
+						<button class = "not-saved" article-id = "{{_id}}">Unsave</button>
+						<button class = "comment" article-id = "{{_id}}">Comment</button> 
+					</div>
+				</div>
+			</div>
+		{{/eq}}
+	{{/each}}
+
+	{{#each articles}}
+		{{#eq source "Hook 'Em"}}
+			<div class = "article-group" id = "hook-em">
+			<h1>Hook 'Em</h1>
+				<div class = "news-article">
+					<div class = "news-article-img" style = "background-image: url('"{{imageLink}}"')">
+					</div>
+					<div class = "news-article-info">
+						<h3><a href = "{{link}}" target = "_blank">{{title}}</a></h3>
+						<p class = "author">By: {{author}}</p>
+						<p class = "summary">{{summary}}</p>
+						<button class = "not-saved" article-id = "{{_id}}">Unsave</button>
+						<button class = "comment" article-id = "{{_id}}">Comment</button> 
+					</div>
+				</div>
+			</div>
+		{{/eq}}
+	{{/each}}
+
+	{{#each articles}}
+		{{#eq source "Texas Diehards"}}
+			<div class = "article-group" id = "texas-diehards">
+			<h1>Texas Diehards</h1>
+				<div class = "news-article">
+					<div class = "news-article-img" style = "background-image: url('"{{imageLink}}"')">
+					</div>
+					<div class = "news-article-info">
+						<h3><a href = "{{link}}" target = "_blank">{{title}}</a></h3>
+						<p class = "author">By: {{author}}</p>
+						<p class = "summary">{{summary}}</p>
+						<button class = "not-saved" article-id = "{{_id}}">Unsave</button>
+						<button class = "comment" article-id = "{{_id}}">Comment</button> 
+					</div>
+				</div>
+			</div>
+		{{/eq}}
+
+	{{/each}}
+</footer>
+
+<script src="js/saved.js"></script>

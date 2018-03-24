@@ -1,4 +1,4 @@
-@font-face {
+@font-face{
     font-family: 'chunkfiveroman';
     src: url('chunkfive-webfont.woff2') format('woff2'),
          url('chunkfive-webfont.woff') format('woff');
@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-.parallax {
+.parallax{
 	background-image: url("/img/dkr_night.jpg");
 	height: 425px;
 	background-attachment: fixed;
@@ -132,6 +132,7 @@ footer h1{
 
 .news-article-info{
 	float: left;
+	width: 80%;
 }
 
 h3{
@@ -139,13 +140,14 @@ h3{
 	margin-bottom: 7px;
 }
 
-h3 a{
+a{
 	text-decoration: none;
 	color: #bf5617;
 }
 
-h3 a:hover{
+a:hover{
 	text-decoration: underline;
+	color: #bf5617;
 }
 
 .author{
@@ -210,4 +212,21 @@ h5{
 	color: white;
 	border: 1px solid #bf5617;
 	background: #bf5617;
+}
+
+/* Unique to saved.handlebars */
+.parallax-saved{
+	background-image: url("/img/texas-football-background.jpg");
+	height: 425px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: -5px;
+}
+
+.article-group{
+	border: 2px solid #bf5617;
+	padding: 10px;
+	margin-bottom: 10px;
 }
